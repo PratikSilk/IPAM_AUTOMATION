@@ -1,0 +1,71 @@
+package newproject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MyClass {
+
+	public static void main(String argws[]) throws InterruptedException
+	{
+		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedrive");
+       
+        
+        WebDriver driver = new ChromeDriver();
+        
+       // driver.get("http://192.168.4.235/login.jsp");
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        driver.get("localhost:8080");
+
+        Thread.sleep(10000);
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement password = driver.findElement(By.id("password"));
+        WebElement submit = driver.findElement(By.tagName("button"));
+        username.sendKeys("nitin.pal");
+        password.sendKeys("Pass_123");
+        submit.click();
+        Thread.sleep(20000);
+
+        WebElement md-view = driver.findElement(By.tagName("md-view"));
+        WebElement circleButton = driver.findElement(By.xpath("//*[@id=\"maincontentarea\"]/div/md-content/div/div/div[1]/md-card/div/div/div/div/div/md-menu/button/md-icon"));
+        circleButton.click();
+        
+        WebElement addGroupIconButton = driver.findElement(By.xpath("//*[@id=\"menu_container_10\"]/md-menu-content/md-menu-item[1]/button/span"));
+        addGroupIconButton.click();
+
+
+        WebElement element = driver.findElement(By.name("groupName"));
+        String val = "Selenium Testing Data"; 
+        element.clear();
+
+        for (int i = 0; i < val.length(); i++){
+        char c = val.charAt(i);
+        String s = new StringBuilder().append(c).toString();
+        element.sendKeys(s);
+        }
+        
+        WebElement addGroupButton = driver.findElement(By.xpath("//*[@id=\"dialogContent_40\"]/form/md-dialog-actions/button[3]"));
+        addGroupButton.click();
+        
+        Thread.sleep(6000);
+        
+        addGroupIconButton.click();
+        addGroupButton.click();
+
+
+       
+	}
+}

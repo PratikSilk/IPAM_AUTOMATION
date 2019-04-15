@@ -1,0 +1,76 @@
+package newproject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MyClass {
+
+	public static void main(String argws[]) throws InterruptedException
+	{
+		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedrive");
+       
+        
+        WebDriver driver = new ChromeDriver();
+        
+       // driver.get("http://192.168.4.235/login.jsp");
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        driver.get("localhost:8080");
+
+        Thread.sleep(3000);
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement password = driver.findElement(By.id("password"));
+        WebElement submit = driver.findElement(By.tagName("button"));
+        username.sendKeys("nitin.pal");
+        password.sendKeys("Pass_123");
+        submit.click();
+        Thread.sleep(10000);
+
+        WebElement md_view = driver.findElement(By.id("viewApp"));
+        md_view.click();
+        
+        WebElement clickOnIPAMImage = driver.findElement(By.xpath("//*[@id=\"menu_container_8\"]/md-menu-content/tri-module-menu/md-menu-content/tri-module-menu-holder/tri-module-menu-item[6]/div/a"));
+        clickOnIPAMImage.click();
+        
+        Thread.sleep(6000);
+        for(int count=0 ; count<300;count++){
+        WebElement circleButton = driver.findElement(By.xpath("//*[@id=\"maincontentarea\"]/div/md-content/div/div/div[1]/md-card/div/div/div/div/div/md-menu/button/md-icon"));
+        circleButton.click();
+        Thread.sleep(1000);
+
+        WebElement addGroupIconButton = driver.findElement(By.cssSelector("#menu_container_46 > md-menu-content > md-menu-item.ng-scope > button"));
+        addGroupIconButton.click();
+
+        Thread.sleep(2000);
+        WebElement element = driver.findElement(By.name("groupName"));
+        String val = "Selenium Testing Data "+count; 
+        element.clear();
+
+        for (int i = 0; i < val.length(); i++){
+        char c = val.charAt(i);
+        String s = new StringBuilder().append(c).toString();
+        element.sendKeys(s);
+        }
+        Thread.sleep(2000);
+        WebElement clickOnAddButtonForCreatingGroup = driver.findElement(By.xpath("//*[@id=\"dialogContent_40\"]/form/md-dialog-actions/button[3]"));
+       
+        clickOnAddButtonForCreatingGroup.click();
+        
+        Thread.sleep(4000);
+        }
+       
+	}
+}
